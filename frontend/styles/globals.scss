@@ -1,0 +1,286 @@
+// AgriMarket Zimbabwe — Bootstrap 5 theme
+// Derived from logo palette (forest green + parchment cream)
+
+$primary:                   #3B6D11;
+$secondary:                 #639922;
+$success:                   #0F6E56;
+$warning:                   #BA7517;
+$danger:                    #A32D2D;
+$info:                      #2C5410;
+$light:                     #FAF3E8;   // parchment — page background
+$dark:                      #1A3A08;   // forest 900 — body text
+
+$body-bg:                   #FAF3E8;
+$body-color:                #1A3A08;
+$card-bg:                   #FFFFFF;
+$card-border-color:         #DDD0B8;
+$border-color:              #DDD0B8;
+
+$input-bg:                  #FFFFFF;
+$input-border-color:        #DDD0B8;
+$input-focus-border-color:  #4E8A18;
+$input-focus-box-shadow:    0 0 0 3px rgba(99, 153, 34, 0.15);
+
+$link-color:                #3B6D11;
+$link-hover-color:          #2C5410;
+
+$border-radius:             0.5rem;
+$border-radius-lg:          0.75rem;
+$border-radius-xl:          1rem;
+
+$font-family-base:          'Inter', sans-serif;
+$font-size-base:            0.9375rem;  // 15px
+
+$navbar-light-brand-color:  #2C5410;
+$navbar-light-active-color: #3B6D11;
+$navbar-light-color:        #4E6A36;
+
+$btn-font-weight:           500;
+$badge-font-weight:         500;
+
+// Import Bootstrap after all overrides
+@import 'bootstrap/scss/bootstrap';
+
+// Global custom rules
+body {
+  background-color: #FAF3E8;
+}
+
+.card {
+  border-color: #DDD0B8;
+}
+
+// Price text helper
+.text-price {
+  color: #3B6D11;
+  font-weight: 500;
+}
+
+// Muted text helper
+.text-hint {
+  color: #7A9460;
+  font-size: 0.75rem;
+}
+
+// Custom Badge and Chip Styles (prevents white-text-on-light-bg bug)
+.badge-verified {
+  background-color: #EAF3DE;
+  color: #2C5410 !important;
+}
+.badge-escrow, .badge-kyc {
+  background-color: #E1F5EE;
+  color: #0F6E56 !important;
+}
+.badge-warning-custom {
+  background-color: #FAEEDA;
+  color: #633806 !important;
+}
+.badge-danger-custom {
+  background-color: #FCEBEB;
+  color: #A32D2D !important;
+}
+.badge-seed {
+  background-color: #F0E6D0;
+  color: #2C5410 !important;
+  border: 0.5px solid #DDD0B8;
+}
+.badge-harvest {
+  background-color: #EAF3DE;
+  color: #2C5410 !important;
+}
+.badge-enterprise {
+  background-color: #FAEEDA;
+  color: #633806 !important;
+}
+.badge-commercial {
+  background-color: #3B6D11;
+  color: #FFFFFF !important;
+}
+
+// Custom helper styles for cards, stats, and buttons with micro-animations
+.am-card {
+  background-color: #FFFFFF;
+  border: 0.5px solid #DDD0B8;
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  box-shadow: none !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+  will-change: transform, box-shadow;
+
+  &:hover {
+    transform: translateY(-3px) scale(1.008);
+    border-color: #3B6D11;
+    box-shadow: 0 12px 24px -8px rgba(44, 84, 16, 0.06) !important;
+  }
+}
+
+.btn-am-primary {
+  background-color: #3B6D11;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+
+  &:hover {
+    background-color: #4E8A18;
+    color: #FFFFFF;
+    transform: translateY(-1.5px);
+    box-shadow: 0 4px 12px rgba(78, 138, 24, 0.2);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-am-outline {
+  border: 1.5px solid #3B6D11;
+  color: #3B6D11;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+
+  &:hover {
+    background-color: #EAF3DE;
+    color: #2C5410;
+    border-color: #4E8A18;
+    transform: translateY(-1.5px);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-am-ghost {
+  background-color: #FAF3E8;
+  color: #2C5410;
+  border: 0.5px solid #DDD0B8;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+
+  &:hover {
+    background-color: #F0E6D0;
+    transform: translateY(-1.5px);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-am-danger {
+  border: 1.5px solid #A32D2D;
+  color: #A32D2D;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+
+  &:hover {
+    background-color: #FCEBEB;
+    color: #A32D2D;
+    transform: translateY(-1.5px);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.am-stat-card {
+  background-color: #F0E6D0;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  box-shadow: none !important;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+  will-change: transform;
+
+  &:hover {
+    transform: translateY(-2px);
+    background-color: #E6DCBF;
+  }
+}
+
+// Global page route transition fade-in
+@keyframes routeFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main {
+  animation: routeFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+// Stage 4 Premium Aesthetic Overrides
+.hover-glow {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+.hover-glow:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(44, 84, 16, 0.12);
+  border-color: #A3C977 !important;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(44, 84, 16, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(44, 84, 16, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(44, 84, 16, 0); }
+}
+
+.btn-pulse {
+  animation: pulseGlow 2s infinite;
+}
+
+@keyframes radarSweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.radar-sweep {
+  animation: radarSweep 4s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes aiThinking {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.ai-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #4E8A18;
+  border-radius: 50%;
+  margin: 0 2px;
+  animation: aiThinking 1.4s infinite ease-in-out both;
+}
+
+.ai-dot:nth-child(1) { animation-delay: -0.32s; }
+.ai-dot:nth-child(2) { animation-delay: -0.16s; }
+
