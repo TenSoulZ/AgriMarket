@@ -175,6 +175,15 @@ DRF_SPECTACULAR_SETTINGS = {
 
 # Redis & Channels Configuration
 REDIS_URL = config('REDIS_URL', default='redis://redis:6379/0')
+
+# Automatically format secure TLS (rediss) URLs to satisfy Celery's strict certificate checks
+CELERY_REDIS_URL = REDIS_URL
+if CELERY_REDIS_URL.startswith('rediss://') and 'ssl_cert_reqs' not in CELERY_REDIS_URL:
+    if '?' in CELERY_REDIS_URL:
+        CELERY_REDIS_URL += '&ssl_cert_reqs=CERT_NONE'
+    else:
+        CELERY_REDIS_URL += '?ssl_cert_reqs=CERT_NONE'
+
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
@@ -185,8 +194,8 @@ CHANNEL_LAYERS = {
 }
 
 # Celery settings
-CELERY_BROKER_URL = REDIS_URL
-CELERY_RESULT_BACKEND = REDIS_URL
+CELERY_BROKER_URL = CELERY_REDIS_URL
+CELERY_RESULT_BACKEND = CELERY_REDIS_URL
 CELERY_TIMEZONE = TIME_ZONE
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
