@@ -8,14 +8,18 @@ DEBUG = False
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='alone-camile-soulzsystems-29ab31ef.koyeb.app,localhost,127.0.0.1').split(',')
 
 # CORS configuration
-FRONTEND_URL = config('FRONTEND_URL', default='https://agrimarket-web.vercel.app')
+FRONTEND_URL = config('FRONTEND_URL', default='https://agri-market-delta.vercel.app')
 CORS_ALLOWED_ORIGINS = [
     FRONTEND_URL,
+    'https://agri-market-delta.vercel.app',
+    'https://agrimarket-web.vercel.app',
 ]
 
 # CSRF configuration
 CSRF_TRUSTED_ORIGINS = [
     FRONTEND_URL,
+    'https://agri-market-delta.vercel.app',
+    'https://agrimarket-web.vercel.app',
     'https://alone-camile-soulzsystems-29ab31ef.koyeb.app',
 ]
 
