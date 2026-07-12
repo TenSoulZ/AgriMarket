@@ -4,10 +4,8 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    'agrimarket-backend.koyeb.app',
-    'localhost',  # in case of health checks/internal routing
-]
+# Allowed Hosts
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='alone-camile-soulzsystems-29ab31ef.koyeb.app,localhost,127.0.0.1').split(',')
 
 # CORS configuration
 FRONTEND_URL = config('FRONTEND_URL', default='https://agrimarket-web.vercel.app')
@@ -18,7 +16,7 @@ CORS_ALLOWED_ORIGINS = [
 # CSRF configuration
 CSRF_TRUSTED_ORIGINS = [
     FRONTEND_URL,
-    'https://agrimarket-backend.koyeb.app',
+    'https://alone-camile-soulzsystems-29ab31ef.koyeb.app',
 ]
 
 # Security headers
