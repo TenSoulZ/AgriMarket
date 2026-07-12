@@ -17,7 +17,18 @@ api_v1_urlpatterns = [
     path('market-data/', include('apps.market_data.urls')),
 ]
 
+from django.http import JsonResponse
+
+def api_root_view(request):
+    return JsonResponse({
+        "name": "AgriMarket Zimbabwe API Gateway",
+        "status": "healthy",
+        "version": "1.0.0",
+        "documentation": "/api/schema/swagger-ui/"
+    })
+
 urlpatterns = [
+    path('', api_root_view, name='api-root'),
     path('admin/', admin.site.urls),
     path('api/v1/', include(api_v1_urlpatterns)),
     
