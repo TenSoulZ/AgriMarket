@@ -74,19 +74,16 @@ export default function Navbar() {
       className="navbar navbar-expand-xl" 
       style={{
         position: 'fixed',
-        top: '1.25rem',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        width: 'calc(100% - 2.5rem)',
-        maxWidth: '1200px',
-        background: 'rgba(255, 255, 255, 0.9)',
+        top: '0',
+        left: '0',
+        width: '100%',
+        background: 'rgba(255, 255, 255, 0.95)',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
-        border: '1px solid rgba(221, 208, 184, 0.7)',
-        borderRadius: '1.25rem',
-        boxShadow: '0 8px 32px 0 rgba(44, 84, 16, 0.04)',
+        borderBottom: '1px solid rgba(221, 208, 184, 0.7)',
+        boxShadow: '0 4px 20px 0 rgba(44, 84, 16, 0.03)',
         zIndex: 1100,
-        padding: '0.6rem 1.25rem',
+        padding: '0.6rem 2rem',
         transition: 'all 0.3s ease',
       }}
     >
