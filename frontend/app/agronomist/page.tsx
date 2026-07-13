@@ -49,10 +49,10 @@ export default function AgronomistPage() {
 
   return (
     <ProtectedRoute allowedRoles={['COMMERCIAL_FARMER', 'SMALLHOLDER_FARMER']}>
-      <div style={{ backgroundColor: '#FAF3E8', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ backgroundColor: '#FAF3E8', height: 'calc(100vh - 95px)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
         
         {/* Navbar Strip */}
-        <div className="py-3 px-4 bg-white border-bottom shadow-sm d-flex justify-content-between align-items-center" style={{ position: 'sticky', top: 0, zIndex: 100 }}>
+        <div className="py-3 px-4 bg-white border-bottom shadow-sm d-flex justify-content-between align-items-center" style={{ zIndex: 100 }}>
           <div className="d-flex align-items-center gap-3">
             <Link href="/dashboard/farmer" className="btn btn-sm btn-am-ghost">← Dashboard</Link>
             <div className="d-flex align-items-center gap-2">
@@ -62,12 +62,12 @@ export default function AgronomistPage() {
           </div>
           <span className="badge badge-enterprise py-2 px-3">Enterprise Feature</span>
         </div>
-
+ 
         {/* Chat Container */}
-        <div className="container py-4 flex-grow-1 d-flex flex-column" style={{ maxWidth: '800px' }}>
+        <div className="container py-3 flex-grow-1 d-flex flex-column" style={{ maxWidth: '800px', overflow: 'hidden' }}>
           
           {/* Messages Area */}
-          <div className="glass-panel rounded p-4 mb-4 flex-grow-1 overflow-auto" style={{ maxHeight: '70vh', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div className="glass-panel rounded p-4 mb-3 d-flex flex-column" style={{ flex: 1, overflowY: 'auto', gap: '1rem' }}>
             
             {messages.map((message, index) => (
               <div 
