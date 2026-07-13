@@ -71,7 +71,7 @@ export default function Navbar() {
  
   return (
     <nav 
-      className="navbar navbar-expand-lg" 
+      className="navbar navbar-expand-xl" 
       style={{
         position: 'fixed',
         top: '1.25rem',
@@ -97,9 +97,9 @@ export default function Navbar() {
           <img 
             src="/agrimarket_logo.png" 
             alt="AgriMarket Logo" 
-            style={{ height: '42px', width: '42px', borderRadius: '50%', objectFit: 'cover', border: '1.5px solid #DDD0B8' }} 
+            style={{ height: '48px', width: '48px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #DDD0B8' }} 
           />
-          <span style={{ color: '#2C5410', fontWeight: 600, fontSize: '1.2rem', letterSpacing: '-0.3px' }}>
+          <span style={{ color: '#2C5410', fontWeight: 700, fontSize: '1.35rem', letterSpacing: '-0.5px' }}>
             AgriMarket <span style={{ color: '#3B6D11' }}>ZW</span>
           </span>
         </Link>
@@ -121,18 +121,18 @@ export default function Navbar() {
         <div className={`collapse navbar-collapse justify-content-between ${isNavOpen ? 'show' : ''}`} id="floatingNavbarCollapse">
           
           {/* Main Links */}
-          <ul className="navbar-nav mx-auto gap-1 my-2 my-lg-0 align-items-lg-center">
+          <ul className="navbar-nav mx-auto gap-1 my-2 my-xl-0 align-items-xl-center">
             {navLinks.map((link) => {
               const active = isLinkActive(link.path);
               return (
                 <li className="nav-item" key={link.path}>
                   <Link 
                     href={link.path}
-                    className="nav-link px-3 py-1.5 transition-all"
+                    className="nav-link px-2.5 py-1.5 transition-all"
                     style={{
                       color: active ? '#2C5410' : '#4E6A36',
                       fontWeight: active ? 600 : 500,
-                      fontSize: '0.875rem',
+                      fontSize: '0.85rem',
                       borderRadius: '0.75rem',
                       backgroundColor: active ? '#EAF3DE' : 'transparent',
                       transition: 'all 0.2s ease',
@@ -144,9 +144,9 @@ export default function Navbar() {
               );
             })}
           </ul>
-
+ 
           {/* User Controls & Currency Switcher */}
-          <div className="d-flex align-items-center gap-3 justify-content-start justify-content-lg-end">
+          <div className="d-flex align-items-center gap-2 justify-content-start justify-content-xl-end">
             <CurrencySwitcher />
             
             <div className="d-flex align-items-center gap-2">
@@ -155,7 +155,7 @@ export default function Navbar() {
                   {(user.role === 'ADMIN' || user.is_staff) ? (
                     <div className="dropdown">
                         <button 
-                            className="btn btn-sm px-3 py-1.5 transition-all shadow-sm btn-am-primary dropdown-toggle" 
+                            className="btn btn-sm px-2.5 py-1.5 transition-all shadow-sm btn-am-primary dropdown-toggle" 
                             type="button" 
                             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                             aria-expanded={isDropdownOpen}
@@ -176,7 +176,7 @@ export default function Navbar() {
                   ) : (
                     <Link 
                       href={getDashboardLink()} 
-                      className={`btn btn-sm px-3 py-1.5 transition-all shadow-sm ${isLinkActive('/dashboard') ? 'btn-am-primary' : 'btn-light border'}`}
+                      className={`btn btn-sm px-2.5 py-1.5 transition-all shadow-sm ${isLinkActive('/dashboard') ? 'btn-am-primary' : 'btn-light border'}`}
                       style={{
                         borderRadius: '0.75rem',
                         fontSize: '0.85rem',
@@ -190,7 +190,7 @@ export default function Navbar() {
                   
                   <Link 
                     href="/profile" 
-                    className={`btn btn-sm px-3 py-1.5 transition-all ${isLinkActive('/profile') ? 'btn-am-primary' : 'btn-am-ghost'}`}
+                    className={`btn btn-sm px-2.5 py-1.5 transition-all ${isLinkActive('/profile') ? 'btn-am-primary' : 'btn-am-ghost'}`}
                     style={{
                       borderRadius: '0.75rem',
                       fontSize: '0.85rem',
@@ -201,10 +201,10 @@ export default function Navbar() {
                   >
                     My Profile
                   </Link>
-
+ 
                   <button 
                     onClick={handleLogout}
-                    className="btn btn-sm btn-am-outline px-3 py-1.5 transition-all"
+                    className="btn btn-sm btn-am-outline px-2.5 py-1.5 transition-all"
                     style={{
                       borderRadius: '0.75rem',
                       fontSize: '0.85rem',
@@ -218,7 +218,7 @@ export default function Navbar() {
                 <>
                   <Link 
                     href="/login" 
-                    className={`btn btn-sm px-3 py-1.5 btn-am-ghost transition-all ${isLinkActive('/login') ? 'btn-am-primary' : ''}`}
+                    className={`btn btn-sm px-2.5 py-1.5 btn-am-ghost transition-all ${isLinkActive('/login') ? 'btn-am-primary' : ''}`}
                     style={{
                       borderRadius: '0.75rem',
                       fontSize: '0.85rem',
@@ -227,10 +227,10 @@ export default function Navbar() {
                   >
                     Login
                   </Link>
-
+ 
                   <Link 
                     href="/register" 
-                    className={`btn btn-sm px-3 py-1.5 btn-am-primary transition-all`}
+                    className={`btn btn-sm px-2.5 py-1.5 btn-am-primary transition-all`}
                     style={{
                       borderRadius: '0.75rem',
                       fontSize: '0.85rem',
@@ -244,9 +244,8 @@ export default function Navbar() {
               )}
             </div>
           </div>
-
+ 
         </div>
-
       </div>
     </nav>
   );
