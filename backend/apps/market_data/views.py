@@ -552,6 +552,6 @@ class AgronomyChatView(APIView):
                 if gemini_response:
                     return Response({"response": gemini_response.strip()}, status=status.HTTP_200_OK)
             
-            return Response({"error": "Failed to parse AI response content."}, status=status.HTTP_502_BAD_GATEWAY)
+            return Response({"error": "Failed to parse AI response content."}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
-            return Response({"error": f"Google AI Engine Request Failed: {str(e)}"}, status=status.HTTP_502_BAD_GATEWAY)
+            return Response({"error": f"Google AI Engine Request Failed: {str(e)}"}, status=status.HTTP_400_BAD_REQUEST)
