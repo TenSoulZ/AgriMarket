@@ -9,7 +9,8 @@ export default function Navbar() {
   const pathname = usePathname();
   const [user, setUser] = useState<any>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
+  const [isNavOpen, setIsNavOpen] = useState(false);
+ 
   // Fetch active user profile from API to determine authentication and admin role status
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -31,8 +32,9 @@ export default function Navbar() {
         setUser(null);
       }
     }
+    setIsNavOpen(false);
   }, [pathname]);
-
+ 
   const handleLogout = () => {
     if (typeof window !== 'undefined') {
       localStorage.removeItem('access_token');
@@ -41,7 +43,7 @@ export default function Navbar() {
       window.location.href = '/login';
     }
   };
-
+ 
   const getDashboardLink = () => {
     if (!user) return '/profile';
     if (user.role === 'ADMIN' || user.is_staff) return '/dashboard/admin';
@@ -50,14 +52,14 @@ export default function Navbar() {
     if (user.role === 'TRANSPORTER') return '/logistics';
     return '/profile';
   };
-
+ 
   const isLinkActive = (path: string) => {
     if (path === '/') {
       return pathname === '/';
     }
     return pathname.startsWith(path);
   };
-
+ 
   const navLinks = [
     { name: 'Marketplace', path: '/marketplace' },
     { name: 'Market Prices', path: '/prices' },
@@ -66,7 +68,7 @@ export default function Navbar() {
     { name: 'Logistics Pooling', path: '/logistics' },
     { name: 'Smart Weather', path: '/weather' },
   ];
-
+ 
   return (
     <nav 
       className="navbar navbar-expand-lg" 
@@ -101,23 +103,22 @@ export default function Navbar() {
             AgriMarket <span style={{ color: '#3B6D11' }}>ZW</span>
           </span>
         </Link>
-
+ 
         {/* Mobile Toggle Button */}
         <button
           className="navbar-toggler border-0 p-1"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#floatingNavbarCollapse"
+          onClick={() => setIsNavOpen(!isNavOpen)}
           aria-controls="floatingNavbarCollapse"
-          aria-expanded="false"
+          aria-expanded={isNavOpen}
           aria-label="Toggle navigation"
           style={{ boxShadow: 'none' }}
         >
           <span className="navbar-toggler-icon" style={{ width: '1.25rem', height: '1.25rem' }}></span>
         </button>
-
+ 
         {/* Navbar Links & Actions */}
-        <div className="collapse navbar-collapse justify-content-between" id="floatingNavbarCollapse">
+        <div className={`collapse navbar-collapse justify-content-between ${isNavOpen ? 'show' : ''}`} id="floatingNavbarCollapse">
           
           {/* Main Links */}
           <ul className="navbar-nav mx-auto gap-1 my-2 my-lg-0 align-items-lg-center">
