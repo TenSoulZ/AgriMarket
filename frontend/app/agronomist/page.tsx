@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import ProtectedRoute from '../../components/ProtectedRoute';
+import { api } from '../../lib/axios';
 
 export default function AgronomistPage() {
   const [messages, setMessages] = useState<{role: 'user' | 'ai', text: string}[]>([
@@ -20,22 +21,30 @@ export default function AgronomistPage() {
     scrollToBottom();
   }, [messages, isTyping]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
 
-    setMessages(prev => [...prev, { role: 'user', text: input }]);
+    const userMessage = input.trim();
+    setMessages(prev => [...prev, { role: 'user', text: userMessage }]);
     setInput('');
     setIsTyping(true);
 
-    // Simulate AI network delay
-    setTimeout(() => {
-      setIsTyping(false);
+    try {
+      const res = await api.post('market-data/agronomy-chat/', {
+        message: userMessage
+      });
+      setMessages(prev => [...prev, { role: 'ai', text: res.data.response }]);
+    } catch (err: any) {
+      console.error('Agronomy AI Chat Error:', err);
+      const errMsg = err.response?.data?.error || 'Unable to establish a secure link to the Google AI Engine. Please try again.';
       setMessages(prev => [...prev, { 
         role: 'ai', 
-        text: "Based on current soil moisture sensors and the upcoming weather pattern, I recommend holding off on nitrogen application for 48 hours to prevent leaching. Your projected yield increase by doing this is 4.2%."
+        text: `Error: ${errMsg}`
       }]);
-    }, 2500);
+    } finally {
+      setIsTyping(false);
+    }
   };
 
   return (

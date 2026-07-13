@@ -21,3 +21,4 @@ django-ratelimit>=4.1.0
 dj-database-url>=2.1.0
 imagekitio>=3.0.0
 django-filter>=24.0
+requests>=2.31.0

@@ -4,7 +4,7 @@ from apps.market_data.views import (
     PriceAlertListCreateView, PriceIndexListView, WeatherAdvisoryView,
     YieldForecastView, SyncMarketPricesView,
     CommodityTemplateView, CommodityBulkUploadView,
-    PriceTemplateView, PriceBulkUploadView
+    PriceTemplateView, PriceBulkUploadView, AgronomyChatView
 )
 
 app_name = 'market_data'
@@ -23,4 +23,5 @@ urlpatterns = [
     path('indices/', PriceIndexListView.as_view(), name='indices'),
     path('weather/', WeatherAdvisoryView.as_view(), name='weather'),
     path('forecast/', YieldForecastView.as_view(), name='forecast'),
+    path('agronomy-chat/', AgronomyChatView.as_view(), name='agronomy-chat'),
 ]
