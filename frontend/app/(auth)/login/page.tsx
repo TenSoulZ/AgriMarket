@@ -73,6 +73,7 @@ export default function LoginPage() {
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 required
+                autoComplete="username"
                 style={{
                   borderColor: '#DDD0B8',
                   borderRadius: '0.5rem',
@@ -96,6 +97,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                autoComplete="current-password"
                 style={{
                   borderColor: '#DDD0B8',
                   borderRadius: '0.5rem',

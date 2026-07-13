@@ -118,6 +118,7 @@ export default function RegisterPage() {
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
                   required
+                  autoComplete="tel"
                 />
               </div>
               <div className="col-md-6">
@@ -129,6 +130,7 @@ export default function RegisterPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required={role === 'COMMERCIAL_FARMER' || role === 'COMMERCIAL_BUYER'}
+                  autoComplete="email"
                 />
               </div>
               <div className="col-md-12">
